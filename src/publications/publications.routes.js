@@ -18,7 +18,7 @@ router.get('/getPublication/:id', [
 ], getPublicationsById);
 
 router.get('/getPublications', [
-    validateJWT,
+    // validateJWT,
 ], getPublications)
 
 router.put('/updatePublication/:id', [

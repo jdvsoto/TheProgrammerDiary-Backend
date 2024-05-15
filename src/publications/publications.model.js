@@ -7,6 +7,10 @@ const PublicationSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
+    subTitle: {
+        type: String,
+        require: true,
+    },
     content: {
         type: String,
         required: true,

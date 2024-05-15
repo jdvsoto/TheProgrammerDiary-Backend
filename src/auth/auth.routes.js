@@ -31,4 +31,33 @@ router.put('/update', [
     validateFields
 ], updateUser)
 
-export default router;
+export default router; 
+
+/*
+import { Router } from "express";
+import { check } from "express-validator";
+import { login, register } from "./auth.controller.js";
+import { validateFields } from "../middlewares/validateFields.js";
+import { existentEmail } from "../helpers/dbValidators.js";
+
+const router = Router()
+
+router.post('/login', 
+    [
+        check('email', 'Este no es un correo válido').isEmail(),
+        check('password','El password es obligatorio').not().isEmpty(),
+        check('password','El password debe de ser mayor a 6 caracteres').isLength({min:6,}),
+        validateFields
+    ], login)
+
+router.post('/register', 
+    [
+        check('email', 'Este no es un correo válido').isEmail(),
+        check('email').custom(existentEmail),
+        check('username','El username es obligatorio').not().isEmpty(),
+        check('password','El password es obligatorio').not().isEmpty(),
+        check('password','El password debe de ser mayor a 6 caracteres').isLength({min:6,}),
+        validateFields
+    ], register)
+
+export default router;*/
