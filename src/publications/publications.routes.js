@@ -9,12 +9,10 @@ import { get } from "mongoose";
 const router = Router();
 
 router.post('/newPublication', [
-    validateJWT,
     validateFields
 ], createPublication);
 
 router.get('/getPublication/:id', [
-    validateJWT,
 ], getPublicationsById);
 
 router.get('/getPublications', [
