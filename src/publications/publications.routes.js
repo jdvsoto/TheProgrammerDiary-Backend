@@ -25,7 +25,7 @@ router.put('/updatePublication/:id', [
 ], updatePublication);
 
 router.delete('/deletePublication/:id', [
-    validateJWT,
+    // validateJWT,
 ], deletePublication);
 
 export default router;

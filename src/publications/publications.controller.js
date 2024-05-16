@@ -104,16 +104,15 @@ export const updatePublication = async (req, res) => {
 export const deletePublication = async (req, res) => {
     try {
         const { id } = req.params;
-        const user = req.user;
-        if (user.role !== "ADMIN_ROLE") {
-            return res.status(401).json({
-                msg: "You are not authorized to see this publication",
-            });
-        }
-        await Publication.findByIdAndUpdate({ _id: id }, { status: false });
+        // await Publication.findByIdAndUp({ _id: id }, { status: false });
+        // return res.status(200).json({
+        //     msg: "Publication has been deleted",
+        // });
+        await Publication.findByIdAndDelete({ _id: id });
         return res.status(200).json({
             msg: "Publication has been deleted",
         });
+        
     } catch (error) {
         return res.status(500).json({
             msg: "Publication has not been deleted",
