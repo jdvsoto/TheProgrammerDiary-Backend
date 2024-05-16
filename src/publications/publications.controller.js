@@ -104,13 +104,10 @@ export const updatePublication = async (req, res) => {
 export const deletePublication = async (req, res) => {
     try {
         const { id } = req.params;
-        // await Publication.findByIdAndUp({ _id: id }, { status: false });
-        // return res.status(200).json({
-        //     msg: "Publication has been deleted",
-        // });
-        await Publication.findByIdAndDelete({ _id: id });
+        const publication =  await Publication.findByIdAndDelete({ _id: id });
         return res.status(200).json({
             msg: "Publication has been deleted",
+            publication,
         });
         
     } catch (error) {
