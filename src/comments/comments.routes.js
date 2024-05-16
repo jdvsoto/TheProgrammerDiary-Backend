@@ -8,7 +8,6 @@ import { createComment, deleteComment, getComments, getCommentsByPublication, ge
 const router = Router();
 
 router.post('/newComment', [
-    validateJWT,
     check('content', 'Content is required').not().isEmpty(),
     check('publication', 'Publication is required').not().isEmpty(),
     validateFields

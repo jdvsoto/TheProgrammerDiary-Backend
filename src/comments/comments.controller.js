@@ -2,12 +2,14 @@ import Comment from "./comments.model.js";
 import mongoose from "mongoose";
 export const createComment = async (req, res) => {
     try {
-        const { content, publication } = req.body;
-        const user = req.user;
+        const { author, email, content, publication } = req.body;
+        if(!author){
+            const userCount = await Comment.countDocuments();
+            author = `User ${userCount + 1}`;
+        }
         const newComment = new Comment({
-            author: user.name,
-            idAuthor: user._id,
-            email: user.email,
+            author,
+            email,
             content,
             publication,
         });
