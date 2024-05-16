@@ -1,30 +1,36 @@
 import Comment from "./comments.model.js";
 import mongoose from "mongoose";
+
 export const createComment = async (req, res) => {
     try {
-        const { author, email, content, publication } = req.body;
-        if(!author){
+        let { author, email, content, publication } = req.body;
+
+        if (!author) {
             const userCount = await Comment.countDocuments();
-            author = `User ${userCount + 1}`;
+            author = `User${userCount + 1}`;
         }
-        const newComment = new Comment({
-            author,
-            email,
-            content,
-            publication,
-        });
+        if (!email) {
+            email = "No email to show :/";
+        }
+
+        const newComment = new Comment({ author, email, content, publication });
+        console.log(newComment);
         await newComment.save();
+
         return res.status(200).json({
             msg: "Comment has been created",
             comment: newComment,
         });
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             msg: "Comment has not been created",
             errors: error,
         });
     }
 };
+
+
 
 export const getComments = async (req, res) => {
     try {

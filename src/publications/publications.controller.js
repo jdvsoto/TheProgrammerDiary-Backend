@@ -2,13 +2,7 @@ import Publication from "./publications.model.js";
 import upload from "../middlewares/multerConfig.js";
 export const createPublication = async (req, res) => {
     try {
-        // const user = req.user;
         const { title, subTitle, content, author, img } = req.body;
-        // if (user.role !== 'ADMIN_ROLE') {
-        //     return res.status(400).json({
-        //         msg: "You are not authorized to create publications"
-        //     })
-        // }
 
         const newPublication = new Publication({
             title,

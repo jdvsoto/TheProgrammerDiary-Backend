@@ -9,14 +9,12 @@ const router = Router();
 
 router.post('/newComment', [
     check('content', 'Content is required').not().isEmpty(),
-    check('publication', 'Publication is required').not().isEmpty(),
     validateFields
 ], createComment);
 
 router.get('/getComments', validateJWT, getComments);
 
 router.get('/getCommentsByPublication', [
-    validateJWT,
     check('publication', 'Publication is required').not().isEmpty(),
     validateFields
 ], getCommentsByPublication);
