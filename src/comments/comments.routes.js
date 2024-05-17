@@ -30,5 +30,5 @@ router.put('/updateComment/:id', [
     validateFields
 ], updateComment);
 
-router.delete('/deleteComment/:id', validateJWT, deleteComment);
+router.delete('/deleteComment/:id', deleteComment);
 export default router;
